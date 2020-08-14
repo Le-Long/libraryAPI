@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework import permissions
+from rest_framework.decorators import action
+from rest_framework.response import Response
 from .serializers import *
 
 
@@ -20,6 +22,14 @@ class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    @action(detail=True)
+    def history(self, request, *args, **kwargs):
+        student = self.get_object()
+        if student.status == 'debt':
+            history = BookLog.objects.filter(student=student)
+            return Response(history)
+        return Response(BookLogSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class BookViewSet(viewsets.ModelViewSet):
