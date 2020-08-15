@@ -17,6 +17,8 @@ Endpoint
   /club/students (GET, POST): list all students or create a new one
   
   /club/students/:id (GET, PUT, PATCH, DELETE): work with a separate student
+  
+  /club/students/:id/history (GET): list all book log that the student has not returned yet (only if the student's status is 'debt') 
 
 - Book:
 
@@ -27,8 +29,6 @@ Endpoint
 - Book Log:
 
   /club/booklog (GET, POST): list all book logs or create a new one
-  
-  (On progress)
   
 - User:
 
