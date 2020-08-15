@@ -1,5 +1,5 @@
 # libraryAPI
-restful API for the web of the library club
+Restful API for the web of the library club. Address: https://protected-hollows-90691.herokuapp.com
 
 Run:
 - Require Python 3, Django and djangorestframework
