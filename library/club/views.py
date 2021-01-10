@@ -25,6 +25,7 @@ class StudentViewSet(viewsets.ModelViewSet):
 
     @action(detail=True)
     def history(self, request, *args, **kwargs):
+        # Only get request is written
         student = self.get_object()
         if student.status == 'debt':
             history = BookLog.objects.filter(student=student)
